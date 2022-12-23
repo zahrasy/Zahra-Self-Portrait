@@ -1,0 +1,99 @@
+"""""""""""""""""""""
+Zahra's Self Portrait
+"""""""""""""""""""""
+
+import pygame, math
+pygame.init()
+
+def drawStuff(background):
+     #scarf
+     pygame.draw.ellipse(background, (0, 0, 0), ((150, 40), (360, 380)), 0)
+     pygame.draw.rect(background, (0, 0, 0), ((150, 242), (360, 242)), )
+
+     #face
+     pygame.draw.ellipse(background, (220, 195, 155), ((180, 70), (300, 315)), 0)
+
+     #scarf point
+     points = ((331,70), (466,159), (455,103), (339,49), (331,70))
+     pygame.draw.polygon(background, (0, 0, 0), points)
+     points = ((331,70), (194,159), (211,103), (325,49), (331,70))
+     pygame.draw.polygon(background, (0, 0, 0), points)
+
+     #eyebrows
+     points = ((301,167), (232,163), (225,182), (237,172), (297,172), (301,167))
+     pygame.draw.polygon(background, (0x37, 0x23, 0x1e), points)
+     points = ((365,167), (430,164), (435,184), (429,171), (368,173), (365,167))
+     pygame.draw.polygon(background, (0x37, 0x23, 0x1e), points)
+
+     #glasses lenses
+     pygame.draw.rect(background, (0, 0, 0), ((210, 175), (100, 75)), 8)
+     pygame.draw.rect(background, (0, 0, 0), ((350, 175), (100, 75)), 8)
+
+     #glasses frame
+     pygame.draw.line(background, (0, 0, 0), (310, 212), (350, 212), 8)
+     pygame.draw.line(background, (0, 0, 0), (178, 195), (211, 211), 8)
+     pygame.draw.line(background, (0, 0, 0), (480, 195), (450, 210), 8)
+
+     #eyeliner
+     pygame.draw.ellipse(background, (0, 0, 0), ((230, 187), (65, 40)), 0)
+     pygame.draw.ellipse(background, (0, 0, 0), ((365, 187), (65, 40)), 0)
+
+     #eyeball
+     pygame.draw.ellipse(background, (255, 255, 255), ((230, 190), (65, 40)), 0)
+     pygame.draw.ellipse(background, (255, 255, 255), ((365, 190), (65, 40)), 0)
+
+     #pupils
+     pygame.draw.circle(background, (0x37, 0x23, 0x1e), (263, 210), 20)
+     pygame.draw.circle(background, (0x37, 0x23, 0x1e), (398, 210), 20)
+     pygame.draw.circle(background, (0x00, 0x00, 0x00), (263, 210), 8)
+     pygame.draw.circle(background, (0x00, 0x00, 0x00), (398, 209), 8)
+
+     #eyes
+     pygame.draw.rect(background, (220, 195, 155), ((233, 222), (70, 10)), 0)
+     pygame.draw.rect(background, (220, 195, 155), ((370, 222), (70, 10)), 0)
+
+     #nose
+     pygame.draw.line(background, (0, 0, 0), (328, 230), (334, 251), 2)
+     pygame.draw.arc(background, (0, 0, 0), ((320, 250), (25, 35)), (3*math.pi)/2, math.pi/2, 2)
+
+     #lips
+     pygame.draw.ellipse(background, (120, 70, 80), ((280, 295), (100, 50)), 0)
+     pygame.draw.rect(background, (220, 195, 155), ((280, 295), (100, 35)), 0)
+     points = ((331, 317),(334, 315),(340, 312),(347, 313),(356, 315),(367, 321),(373, 325),(369, 324),(372, 324),(376, 323),(377, 323),(378, 326),(374, 328),(288,329),(285, 330),(283, 328),(286, 328),(290, 330),(296,320),(300,319),(305,317),(308,316),(314,313),(318,313),(323,313),(328,315),(331,317))
+     pygame.draw.polygon(background, (120, 70, 80), points)
+
+def main():
+     # D - Display configuration
+     screen = pygame.display.set_mode((640, 480))
+     pygame.display.set_caption("Drawing commands")
+
+     # E - Entities (just background for now)
+     background = pygame.Surface(screen.get_size())
+     background = background.convert()
+     background.fill((170, 195, 195))
+
+     drawStuff(background)
+
+     # A - Action (broken into ALTER steps)
+     # A - Assign values to key variables
+     clock = pygame.time.Clock()
+     keepGoing = True
+
+     # L - Loop
+     while keepGoing:
+
+          # T - Timer to set frame rate
+          clock.tick(30)
+
+          # E - Event handling
+          for event in pygame.event.get():
+               if event.type == pygame.QUIT:
+                    keepGoing = False
+               elif event.type == pygame.MOUSEBUTTONUP:
+                    print (pygame.mouse.get_pos())
+          # R - Refresh display
+          screen.blit(background, (0, 0))
+          pygame.display.flip()
+
+# Call the main function
+main()
